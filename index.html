@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculater</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+  
+    <h1>Age Calculator</h1>
+    <div>
+     
+            <div class="age_calc"><br>
+                <span> Enter current</span><br>
+                <strong>Year</Strong>
+                <input id="current" type="number" required min="2020" max="2025">
+                <Strong>Month</Strong>
+                <input id="c_month" type="number" required min="1" max="12">
+                <Strong>Date</Strong>
+                <input id="c_date" type="number" required min="1" max="31"><br>
+              <br>
+                <span> Enter Birth</span><br>
+                <Strong>Year</Strong>
+                <input id="birth" type="number" required min="1990" max="2010">
+                <Strong>Month</Strong>
+                <input id="month" type="number" required min="1" max="12">
+                <Strong>Date</Strong>
+                <input id="date" type="number" required min="1" max="31"><br>
+                
+            <button onclick="cal()" disabled id="submit">calculate</button>
+            <div id="result"></div>
+            </div>
+      
+    </div>
+  
+    <script>
+        
+        function cal(){
+            var current =document.getElementById("current").value;
+            var birth =document.getElementById("birth").value;
+            var month = document.getElementById("month").value;
+            var c_month = document.getElementById("c_month").value;
+            var date =document.getElementById("date").value;
+            var c_date =document.getElementById("c_date").value;
+            var m = 12;
+            var addition =(date-c_date);
+            var diff_year = current-birth;
+            var diff_month = c_month-month;
+            var result ="";
+
+             if (addition < 0) {
+        monthDiff--;
+        addition += 30;
+      }
+
+      if (diff_month < 0) {
+        diff_year --;
+        diff_month += 12;
+      }
+    
+  
+    result += diff_year + " Years, " + diff_month + " Months, " +(30- addition) + " Days";
+
+document.getElementById("result").innerHTML = result;
+      
+    
+      }
+      const submit = document.getElementById("submit");
+      const input =document.getElementById("current");
+      input.addEventListener("keyup",(e)=>{
+        const value = e.currentTarget.value;
+        submit.disabled = false;
+        if (value === ""){
+          submit.disabled = true;
+        }
+      })
+    
+    </script>
+</body>
+</html>
